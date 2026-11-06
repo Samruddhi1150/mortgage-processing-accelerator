@@ -1,0 +1,17 @@
+slo:
+  name: time_to_conditional_decision
+  target_seconds: 30
+  target_percentage: 95
+  start_event: all_required_documents_present
+  stop_event: conditional_decision_created
+  excluded_states:
+    - waiting_for_applicant
+valuation:
+  max_age_hours: 24
+tools:
+  timeout_seconds: 5
+alerts:
+  slow_stage_seconds: 5
+  stale_valuation: true
+  incomplete_result: true
+  tool_timeout: true

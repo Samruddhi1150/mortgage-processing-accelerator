@@ -1,0 +1,8 @@
+[
+  {"property_id":"PROP-501","estimated_value":345000,"currency":"GBP","valuation_date":"2026-11-05T07:30:00Z","age_hours":1.5,"cached":false,"source":"Demo Valuation API","status":"current","tool_delay_seconds":1.1,"complete":true},
+  {"property_id":"PROP-502","estimated_value":410000,"currency":"GBP","valuation_date":"2026-11-05T08:00:00Z","age_hours":1.0,"cached":false,"source":"Demo Valuation API","status":"current","tool_delay_seconds":9.5,"complete":true},
+  {"property_id":"PROP-503","estimated_value":300000,"currency":"GBP","valuation_date":"2026-11-02T09:10:00Z","age_hours":72,"cached":true,"source":"Demo Valuation Cache","status":"stale","tool_delay_seconds":0.3,"complete":true},
+  {"property_id":"PROP-504","estimated_value":255000,"currency":"GBP","valuation_date":"2026-11-05T08:20:00Z","age_hours":0.8,"cached":false,"source":"Demo Valuation API","status":"current","tool_delay_seconds":1.0,"complete":true},
+  {"property_id":"PROP-505","estimated_value":560000,"currency":"GBP","valuation_date":"2026-11-05T08:30:00Z","age_hours":0.7,"cached":false,"source":"Demo Valuation API","status":"current","tool_delay_seconds":1.2,"complete":true},
+  {"property_id":"PROP-506","estimated_value":390000,"currency":"GBP","valuation_date":null,"age_hours":null,"cached":false,"source":"Demo Valuation API","status":"timeout","tool_delay_seconds":6.0,"complete":false,"error_code":"VAL_TIMEOUT"}
+]

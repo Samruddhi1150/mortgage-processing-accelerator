@@ -1,0 +1,8 @@
+[
+  {"application_id":"MORT-1001","credit_cards_balance":4200,"personal_loans_balance":7500,"monthly_debt_payment":410,"credit_check_status":"complete","tool_delay_seconds":0.8,"complete":true},
+  {"application_id":"MORT-1002","credit_cards_balance":2500,"personal_loans_balance":0,"monthly_debt_payment":145,"credit_check_status":"complete","tool_delay_seconds":0.9,"complete":true},
+  {"application_id":"MORT-1003","credit_cards_balance":6800,"personal_loans_balance":12000,"monthly_debt_payment":620,"credit_check_status":"complete","tool_delay_seconds":1.0,"complete":true},
+  {"application_id":"MORT-1004","credit_cards_balance":1200,"personal_loans_balance":3500,"monthly_debt_payment":210,"credit_check_status":"complete","tool_delay_seconds":0.7,"complete":true},
+  {"application_id":"MORT-1005","credit_cards_balance":null,"personal_loans_balance":18000,"monthly_debt_payment":null,"credit_check_status":"partial","tool_delay_seconds":0.5,"complete":false,"missing_fields":["credit_cards_balance","monthly_debt_payment"]},
+  {"application_id":"MORT-1006","credit_cards_balance":3100,"personal_loans_balance":9000,"monthly_debt_payment":460,"credit_check_status":"complete","tool_delay_seconds":0.9,"complete":true}
+]

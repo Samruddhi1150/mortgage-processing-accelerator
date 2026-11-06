@@ -1,0 +1,8 @@
+[
+  {"application_id":"MORT-1001","expected_decision":"CONDITIONAL_APPROVAL","outstanding_conditions":[],"expected_alerts":[]},
+  {"application_id":"MORT-1002","expected_decision":"CONDITIONAL_APPROVAL","outstanding_conditions":[],"expected_alerts":["SLOW_STAGE:valuation_check"]},
+  {"application_id":"MORT-1003","expected_decision":"PENDING","outstanding_conditions":["Current property valuation required"],"expected_alerts":["STALE_VALUATION"]},
+  {"application_id":"MORT-1004","expected_decision":"WAITING_FOR_APPLICANT","outstanding_conditions":["Latest tax return required","Third bank statement required"],"expected_alerts":[]},
+  {"application_id":"MORT-1005","expected_decision":"PENDING","outstanding_conditions":["Complete debt data required"],"expected_alerts":["INCOMPLETE_TOOL_RESPONSE:debt_check"]},
+  {"application_id":"MORT-1006","expected_decision":"PENDING","outstanding_conditions":["Property valuation service retry required"],"expected_alerts":["TOOL_TIMEOUT:valuation_check"]}
+]

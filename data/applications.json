@@ -1,0 +1,8 @@
+[
+  {"application_id":"MORT-1001","applicant_name":"Aarav Mehta","annual_income":78000,"property_id":"PROP-501","requested_amount":250000,"term_years":25,"documents_complete":true,"documents_present_at":"2026-11-05T09:00:00Z","scenario":"healthy"},
+  {"application_id":"MORT-1002","applicant_name":"Maya Patel","annual_income":92000,"property_id":"PROP-502","requested_amount":310000,"term_years":30,"documents_complete":true,"documents_present_at":"2026-11-05T09:05:00Z","scenario":"slow_valuation"},
+  {"application_id":"MORT-1003","applicant_name":"Noah Williams","annual_income":65000,"property_id":"PROP-503","requested_amount":220000,"term_years":25,"documents_complete":true,"documents_present_at":"2026-11-05T09:10:00Z","scenario":"stale_valuation"},
+  {"application_id":"MORT-1004","applicant_name":"Isla Brown","annual_income":54000,"property_id":"PROP-504","requested_amount":190000,"term_years":20,"documents_complete":false,"documents_present_at":null,"scenario":"missing_income_document"},
+  {"application_id":"MORT-1005","applicant_name":"Ethan Khan","annual_income":105000,"property_id":"PROP-505","requested_amount":420000,"term_years":30,"documents_complete":true,"documents_present_at":"2026-11-05T09:20:00Z","scenario":"incomplete_debt_data"},
+  {"application_id":"MORT-1006","applicant_name":"Sophie Taylor","annual_income":88000,"property_id":"PROP-506","requested_amount":295000,"term_years":25,"documents_complete":true,"documents_present_at":"2026-11-05T09:25:00Z","scenario":"valuation_timeout"}
+]

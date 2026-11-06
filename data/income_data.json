@@ -1,0 +1,8 @@
+[
+  {"application_id":"MORT-1001","employment_status":"employed","monthly_gross_income":6500,"payslips_received":3,"bank_statements_received":3,"verification_status":"verified","tool_delay_seconds":0.6,"complete":true},
+  {"application_id":"MORT-1002","employment_status":"employed","monthly_gross_income":7666.67,"payslips_received":3,"bank_statements_received":3,"verification_status":"verified","tool_delay_seconds":0.8,"complete":true},
+  {"application_id":"MORT-1003","employment_status":"employed","monthly_gross_income":5416.67,"payslips_received":3,"bank_statements_received":3,"verification_status":"verified","tool_delay_seconds":0.7,"complete":true},
+  {"application_id":"MORT-1004","employment_status":"self_employed","monthly_gross_income":4500,"payslips_received":0,"bank_statements_received":2,"verification_status":"pending","tool_delay_seconds":0.4,"complete":false,"missing_items":["latest_tax_return","third_bank_statement"]},
+  {"application_id":"MORT-1005","employment_status":"employed","monthly_gross_income":8750,"payslips_received":3,"bank_statements_received":3,"verification_status":"verified","tool_delay_seconds":0.9,"complete":true},
+  {"application_id":"MORT-1006","employment_status":"employed","monthly_gross_income":7333.33,"payslips_received":3,"bank_statements_received":3,"verification_status":"verified","tool_delay_seconds":0.6,"complete":true}
+]
