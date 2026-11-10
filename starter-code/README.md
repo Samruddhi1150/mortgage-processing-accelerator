@@ -75,9 +75,10 @@ at it only after trying to diagnose the incident yourself.
 8. Or run the API: `uvicorn app:app --reload --port 8000`
 9. Open Jaeger at `http://localhost:16686` and select the `anvesh-agent`
    service to find traces. Open the provisioned Grafana dashboard at
-   `http://localhost:3000` for request rate, latency, cost, and tool
-   failures. Prometheus is available at `http://localhost:9090`. Stop the
-   services with `docker compose down`.
+   `http://localhost:3000` for mortgage document intake, stage latency,
+   failures and alerts, decision-time SLO tracking, plus investigation
+   investigation totals, latency, cost, and tool failures. Prometheus is available
+   at `http://localhost:9090`. Stop the services with `docker compose down`.
 
 ## Where to go next
 

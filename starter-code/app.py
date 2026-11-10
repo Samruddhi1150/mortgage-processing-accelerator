@@ -10,7 +10,7 @@ from src.core.incidents import seed_incident, clear_incident, incident_status, r
 from src.data.mock_store import CUSTOMERS
 from src.mortgage.api import router as mortgage_router
 
-app = FastAPI(title="Anvesh Challenge — Fraud/AML Investigation Agent (starter, unobserved)")
+app = FastAPI(title="Mortgage Investigation Agent", version="0.1.0")
 app.include_router(mortgage_router)
 
 

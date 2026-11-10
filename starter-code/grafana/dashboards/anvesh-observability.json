@@ -19,9 +19,163 @@
   "links": [],
   "panels": [
     {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "id": 10,
+      "panels": [],
+      "title": "Mortgage Workflow",
+      "type": "row"
+    },
+    {
       "datasource": { "type": "prometheus", "uid": "prometheus" },
-      "fieldConfig": { "defaults": { "unit": "reqps", "min": 0 }, "overrides": [] },
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0 }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 1 },
+      "id": 11,
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "sum by (document_type) ({__name__=~\"mortgage_documents_received(_document)?_total\"})",
+          "legendFormat": "{{document_type}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Documents Received (Process Total)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "s", "min": 0 }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 1 },
+      "id": 12,
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.50, sum by (le, outcome) ({__name__=~\"mortgage_time_to_decision(_seconds|_s)?_bucket\"}))",
+          "legendFormat": "p50 {{outcome}}",
+          "refId": "A"
+        },
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum by (le, outcome) ({__name__=~\"mortgage_time_to_decision(_seconds|_s)?_bucket\"}))",
+          "legendFormat": "p95 {{outcome}}",
+          "refId": "B"
+        }
+      ],
+      "title": "Cumulative Time to Decision (Applicant Wait Excluded)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "ms", "min": 0 }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 9 },
+      "id": 13,
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.50, sum by (le, stage) ({__name__=~\"mortgage_stage_duration(_milliseconds|_ms)?_bucket\"}))",
+          "legendFormat": "p50 {{stage}}",
+          "refId": "A"
+        },
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum by (le, stage) ({__name__=~\"mortgage_stage_duration(_milliseconds|_ms)?_bucket\"}))",
+          "legendFormat": "p95 {{stage}}",
+          "refId": "B"
+        }
+      ],
+      "title": "Cumulative Evidence Stage Latency (p50 / p95)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0 }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 9 },
+      "id": 14,
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "sum({__name__=~\"mortgage_stage_failures(_failure)?_total\"}) or vector(0)",
+          "legendFormat": "total failures",
+          "refId": "A"
+        }
+      ],
+      "title": "Evidence Stage Failures (Process Total)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0 }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 17 },
+      "id": 15,
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "sum({__name__=~\"mortgage_stage_alerts(_alert)?_total\"}) or vector(0)",
+          "legendFormat": "total alerts",
+          "refId": "A"
+        }
+      ],
+      "title": "Mortgage Stage Alerts (Process Total)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "s", "min": 0 }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 17 },
+      "id": 16,
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "single", "sort": "none" }
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum by (le) ({__name__=~\"mortgage_time_to_decision(_seconds|_s)?_bucket\"}))",
+          "legendFormat": "p95 decision time",
+          "refId": "A"
+        },
+        {
+          "editorMode": "code",
+          "expr": "vector(30)",
+          "legendFormat": "30-second target",
+          "refId": "B"
+        }
+      ],
+      "title": "Decision SLO: Cumulative p95 vs 30s Target",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 25 },
+      "id": 17,
+      "panels": [],
+      "title": "Investigation Agent",
+      "type": "row"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0 }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 26 },
       "id": 1,
       "options": {
         "legend": { "displayMode": "list", "placement": "bottom" },
@@ -30,18 +184,18 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(rate({__name__=~\"investigation_requests(_request)?_total\"}[1m])) or vector(0)",
-          "legendFormat": "requests/sec",
+          "expr": "sum({__name__=~\"investigation_requests(_request)?_total\"}) or vector(0)",
+          "legendFormat": "total investigations",
           "refId": "A"
         }
       ],
-      "title": "Investigation Request Rate",
+      "title": "Investigations (Process Total)",
       "type": "timeseries"
     },
     {
       "datasource": { "type": "prometheus", "uid": "prometheus" },
       "fieldConfig": { "defaults": { "unit": "ms", "min": 0 }, "overrides": [] },
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 26 },
       "id": 2,
       "options": {
         "legend": { "displayMode": "list", "placement": "bottom" },
@@ -50,24 +204,24 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.50, sum by (le) (rate({__name__=~\"investigation_duration(_milliseconds|_ms)?_bucket\"}[5m])))",
+          "expr": "histogram_quantile(0.50, sum by (le) ({__name__=~\"investigation_duration(_milliseconds|_ms)?_bucket\"}))",
           "legendFormat": "p50",
           "refId": "A"
         },
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum by (le) (rate({__name__=~\"investigation_duration(_milliseconds|_ms)?_bucket\"}[5m])))",
+          "expr": "histogram_quantile(0.95, sum by (le) ({__name__=~\"investigation_duration(_milliseconds|_ms)?_bucket\"}))",
           "legendFormat": "p95",
           "refId": "B"
         }
       ],
-      "title": "Investigation Latency (p50 / p95)",
+      "title": "Cumulative Investigation Latency (p50 / p95)",
       "type": "timeseries"
     },
     {
       "datasource": { "type": "prometheus", "uid": "prometheus" },
       "fieldConfig": { "defaults": { "unit": "currencyUSD", "min": 0 }, "overrides": [] },
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 34 },
       "id": 3,
       "options": {
         "legend": { "displayMode": "list", "placement": "bottom" },
@@ -76,18 +230,18 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(increase({__name__=~\"investigation_cost(_USD|_usd)?_sum\"}[1h])) or vector(0)",
+          "expr": "sum({__name__=~\"investigation_cost(_USD|_usd)?_sum\"}) or vector(0)",
           "legendFormat": "USD / trailing hour",
           "refId": "A"
         }
       ],
-      "title": "Investigation Cost per Hour",
+      "title": "Investigation Cost (Process Total)",
       "type": "timeseries"
     },
     {
       "datasource": { "type": "prometheus", "uid": "prometheus" },
-      "fieldConfig": { "defaults": { "unit": "ops", "min": 0 }, "overrides": [] },
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0 }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 34 },
       "id": 4,
       "options": {
         "legend": { "displayMode": "list", "placement": "bottom" },
@@ -96,22 +250,22 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(rate({__name__=~\"investigation_tool_failures(_failure)?_total\"}[5m])) or vector(0)",
-          "legendFormat": "failures/sec",
+          "expr": "sum({__name__=~\"investigation_tool_failures(_failure)?_total\"}) or vector(0)",
+          "legendFormat": "total failures",
           "refId": "A"
         }
       ],
-      "title": "Tool-Failure Rate",
+      "title": "Tool Failures (Process Total)",
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
+  "refresh": "10s",
   "schemaVersion": 39,
-  "tags": ["anvesh", "opentelemetry"],
+  "tags": ["mortgage", "investigations", "opentelemetry"],
   "time": { "from": "now-1h", "to": "now" },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Anvesh Observability",
+  "title": "Mortgage & Investigation Observability",
   "uid": "anvesh-observability",
   "version": 1,
   "weekStart": ""

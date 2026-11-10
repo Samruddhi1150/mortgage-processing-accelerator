@@ -1,9 +1,9 @@
 apiVersion: 1
 
 providers:
-  - name: Anvesh
+  - name: mortgage-processing-accelerator
     orgId: 1
-    folder: Anvesh
+    folder: mortgage-processing-accelerator
     type: file
     disableDeletion: true
     editable: false

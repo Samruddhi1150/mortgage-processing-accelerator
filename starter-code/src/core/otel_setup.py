@@ -21,7 +21,7 @@ def _otlp_endpoint(signal: str) -> str:
     return f"http://localhost:4318/v1/{signal}"
 
 
-_resource = Resource.create({"service.name": os.getenv("OTEL_SERVICE_NAME", "anvesh-agent")})
+_resource = Resource.create({"service.name": os.getenv("OTEL_SERVICE_NAME", "mortgage-processing-accelerator-agent")})
 _provider = TracerProvider(resource=_resource)
 _provider.add_span_processor(
     BatchSpanProcessor(OTLPSpanExporter(endpoint=_otlp_endpoint("traces")))
