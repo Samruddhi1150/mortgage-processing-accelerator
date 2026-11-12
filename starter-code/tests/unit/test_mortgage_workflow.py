@@ -236,3 +236,27 @@ def test_document_hub_api_accepts_incremental_evidence():
     assert response.json()["status"] == "pending"
     assert status.status_code == 200
     assert status.json()["received_documents"] == ["income"]
+
+
+def test_seeded_applications_are_available_through_status_api():
+    import app as application
+    from src.mortgage import api
+
+    previous_orchestrator = api._orchestrator
+    orchestrator = MortgageOrchestrator(clock=lambda: NOW)
+    api._load_seed_applications(orchestrator)
+    api._orchestrator = orchestrator
+    try:
+        client = TestClient(application.app)
+        healthy = client.get("/mortgage/applications/MORT-1001")
+        incomplete = client.get("/mortgage/applications/MORT-1005")
+        missing = client.get("/mortgage/applications/MORT-NOPE")
+    finally:
+        api._orchestrator = previous_orchestrator
+
+    assert healthy.status_code == 200
+    assert healthy.json()["received_documents"] == ["debt", "income", "valuation"]
+    assert set(healthy.json()["stage_status"].values()) == {"complete"}
+    assert incomplete.status_code == 200
+    assert incomplete.json()["stage_status"]["debt"] == "incomplete"
+    assert missing.status_code == 404
